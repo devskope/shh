@@ -21,14 +21,14 @@ function shh() {
   if [ "$PATH_INPUT" ]; then
     # Create Script in custom path
     echo -e "Spawning script $SCRIPT_NAME in $PATH_INPUT\n"
-    mv /tmp/shh-$SCRIPT_NAME $PATH_INPUT/$SCRIPT_NAME
+    mv -i /tmp/shh-$SCRIPT_NAME $PATH_INPUT/$SCRIPT_NAME
     echo -e "Launching vim\n"
     sleep 0.6
     vi +star + $PATH_INPUT/$SCRIPT_NAME
   else
     # Create Script in CWD
     echo -e "No custom path...\n Spawning script $SCRIPT_NAME in $PWD\n"
-    mv /tmp/shh-$SCRIPT_NAME ./$SCRIPT_NAME
+    mv -i /tmp/shh-$SCRIPT_NAME ./$SCRIPT_NAME
     echo -e "Launching vim \n"
     sleep 0.6
     vi +star + ./$SCRIPT_NAME
