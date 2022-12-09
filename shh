@@ -37,6 +37,7 @@ function shh() {
 
 if [ -z "$1" ]; then
   echo Error: must provide script name as first argument
+  exit 1
 else
   echo Running spawner...
   shh
