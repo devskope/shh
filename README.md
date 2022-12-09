@@ -3,7 +3,7 @@
 Simplify creation of executable shell scripts (bash)
 
 - [x] create script file
-- [x] open file vi edit mode
+- [x] open file in vi _Insert mode_
 
 
 ## Installation
