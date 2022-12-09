@@ -10,6 +10,12 @@ echo -e "#                     shh <script_name>                    #"
 echo -e "#             TODO: options, help, e.t.c                   #"
 echo -e "############################################################\n\n"
 
+if [ "$(id -u)" != "0" ]
+then
+	echo "Sorry, you are not root. Maybe run sudo ./installer.sh"
+	exit 1
+fi
+
 echo Installing to /usr/local/bin
 
 for i in {1..10}
