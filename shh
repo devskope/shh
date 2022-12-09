@@ -1,0 +1,43 @@
+#!/bin/bash
+
+############################################################
+#      Script to create script files with #!/bin/bash      #
+#            launch script in vi insert mode               #
+#         USAGE:  shh <script_name> <path>                 #
+#             TODO: options, help, e.t.c                   #
+############################################################
+
+# define parameters which are passed in.
+SCRIPT_NAME=$1
+PATH_INPUT=$2
+
+function shh() {
+  # Spawn executable script in /tmp
+  echo -e "#!/bin/bash\n" >/tmp/shh-$SCRIPT_NAME
+  chmod u+x /tmp/shh-$SCRIPT_NAME
+
+  sleep 0.3
+
+  if [ "$PATH_INPUT" ]; then
+    # Create Script in custom path
+    echo -e "Spawning script $SCRIPT_NAME in $PATH_INPUT\n"
+    mv /tmp/shh-$SCRIPT_NAME $PATH_INPUT/$SCRIPT_NAME
+    echo -e "Launching vim\n"
+    sleep 0.6
+    vi +star + $PATH_INPUT/$SCRIPT_NAME
+  else
+    # Create Script in CWD
+    echo -e "No custom path...\n Spawning script $SCRIPT_NAME in $PWD\n"
+    mv /tmp/shh-$SCRIPT_NAME ./$SCRIPT_NAME
+    echo -e "Launching vim \n"
+    sleep 0.6
+    vi +star + ./$SCRIPT_NAME
+  fi
+}
+
+if [ -z "$1" ]; then
+  echo Error: must provide script name as first argument
+else
+  echo Running spawner...
+  shh
+fi
